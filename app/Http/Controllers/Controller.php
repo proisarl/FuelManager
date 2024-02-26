@@ -9,4 +9,9 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
+    public function index()
+    {
+        $company="vide";
+        return view('index',compact("company"));
+    }
 }

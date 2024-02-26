@@ -13,12 +13,16 @@
 </head>
   <body class="bg-gradient-primary">
     <div class="container-scroller">
-        {{-- @include('layouts.vitrine.partials._navbar') --}}
+        @include('layouts.partials._sidebar')
+        @include('layouts.partials._navbar')
         @yield('contenu')
-        {{-- @include('layouts.vitrine.partials._footer') --}}
+        @include('layouts.partials._footer')
   </body>
   <script src="{!! asset('template/vendor/jquery/jquery.min.js') !!}"></script>
   <script src="{!! asset('template/vendor/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>
   <script src="{!! asset('template/vendor/jquery-easing/jquery.easing.min.js') !!}"></script>
   <script src="{!! asset('template/js/sb-admin-2.min.js') !!}"></script>
+  <script src="{!! asset('template/vendor/chart.js/Chart.min.js') !!}"></script>
+  <script src="{!! asset('template/js/demo/chart-area-demo.js') !!}"></script>
+  <script src="{!! asset('template/js/demo/chart-pie-demo.js') !!}"></script>
 </html>
