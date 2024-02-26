@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 Route::group([
     'namespace' => 'App\Http\Controllers',
-    // 'middleware'=>['auth'],
+    'middleware'=>['auth'],
     // 'prefix' => 'prois',
 ], function(){
     Route::get('/home', 'Controller@index');

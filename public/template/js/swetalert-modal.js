@@ -19,4 +19,19 @@ window.addEventListener('Edit-accouchement',event => {
 window.addEventListener('name-updated',event => {
     $('#add_information').modal('show');
 });
+function logout(){
+    // swal({
+    //   title: "Se Deconnecter ?",
+    //   type: "warning",
+    //   showCancelButton: true,
+    //   closeOnConfirm: false,
+    //   showLoaderOnConfirm: true
+    // }, function (isConfirm) {
+    //     if (isConfirm){
+    //       swal("Deconnexion!", "Vous Vous etes deconnectés.", "success");
+        //   event.preventDefault();
+          document.getElementById('logout-form').submit();
+    //     }
+    // });
+}
 

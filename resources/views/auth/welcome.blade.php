@@ -14,15 +14,18 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Connectez-Vous! <hr></h1>
                                 </div>
-                                <form class="user">
+                                <form class="user" method="POST" action="{{ route('login') }}">
+                                    @csrf
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user"
+                                        <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" value="{{ old('email') }}" name="email"
                                             id="exampleInputEmail" aria-describedby="emailHelp"
-                                            placeholder="Entrer l'adresse e-mail...">
+                                            placeholder="Entrer l'adresse e-mail..." autofocus>
+                                            @error('email')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user"
+                                        <input type="password"  name="password" class="form-control form-control-user"
                                             id="exampleInputPassword" placeholder="Mot de passe">
+                                            @error('password')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
@@ -30,9 +33,9 @@
                                             <label class="custom-control-label" for="customCheck">Souviens-toi de moi</label>
                                         </div>
                                     </div>
-                                    <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                    <button class="btn btn-primary btn-user btn-block">
                                         Se conntecter
-                                    </a>
+                                    </button>
                                 </form>
                                 <hr>
                                 <div class="text-center">

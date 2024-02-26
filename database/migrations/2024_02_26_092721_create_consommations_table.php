@@ -13,7 +13,16 @@ return new class extends Migration
     {
         Schema::create('consommations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('affectation_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('vehicule_id')->constrained()->onDelete('cascade');
+            $table->string("vehicule");
+            $table->string("societe");
+            $table->integer("quantite");
+            $table->integer("index");
+            $table->string("chauffeur");
+            $table->string("pompiste");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

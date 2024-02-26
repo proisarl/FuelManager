@@ -16,10 +16,14 @@
 </head>
   <body class="bg-gradient-primary">
     <div class="container-scroller">
+      @empty(!Auth::user())
         @include('layouts.partials._sidebar')
         @include('layouts.partials._navbar')
+      @endempty
         @yield('contenu')
+      @empty(!Auth::user())
         @include('layouts.partials._footer')
+      @endempty
   </body>
   <script src="{!! asset('template/vendor/jquery/jquery.min.js') !!}"></script>
   <script src="{!! asset('template/vendor/toaster/bootstrap-toaster.js') !!}"></script>
@@ -30,6 +34,6 @@
   {{-- <script src="{!! asset('template/js/demo/chart-area-demo.js') !!}"></script> --}}
   {{-- <script src="{!! asset("template/js/sweet_alert.js") !!}"></script> --}}
   {{-- <script src="{!! asset('template/js/demo/chart-pie-demo.js') !!}"></script> --}}
-  {{-- <script src="{!! asset("template/js/swetalert-modal.js") !!}"></script> --}}
+  <script src="{!! asset("template/js/swetalert-modal.js") !!}"></script>
   <script src="{!! asset('template/vendor/toaster/index.js') !!}"></script>
 </html>
