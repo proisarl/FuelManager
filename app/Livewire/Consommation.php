@@ -13,7 +13,10 @@ class Consommation extends Component
         return (new AddConsommationRequest())->rules(); 
     }
     public function save(){
-        $this->validate();
+        // session()->flash('status', 'Post successfully updated.');
+        $this->dispatch('toast', ['type' => 'error', 'message' => "Erreur lors d'enregistrement cette adresse Existe dans nos Dossiers!"]);
+        // $this->validate();
+        // dd($this->consommation);
 
     }
     public function render()
