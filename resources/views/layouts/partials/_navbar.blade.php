@@ -38,7 +38,7 @@
       </li>
       <li class="nav-item dropdown no-arrow mx-1">
           <i class="nav-link text-info" href="#">
-              Poste : Station {{Auth::user()->affectation->poste->designation}}
+              Poste : Station {{Auth::user()->affectation->poste->designation ?? ""}}
           </i>
       </li>
 
