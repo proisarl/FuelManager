@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Http\Requests\ReleveRequest;
+use App\Models\RemiseReprise as ModelsRemiseReprise;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -24,15 +25,18 @@ class RemiseReprise extends Component
             if (Hash::check($this->remise["password"],Auth::user()->password)) {
                 $getUserReleve->givePermissionTo("login");
                 Auth::user()->revokePermissionTo("login");
-                $mesage="ok";
-                // $user1->givePermissionTo("login");
+                ModelsRemiseReprise::firstOrCreate([
+                    "relevant"=>$this->remise["id"],
+                    "releve"=>Auth::user()->id,
+                    "commentaire"=>$this->remise["commentaire"]
+                ]);
+                return redirect()->to('home');
             } else {
                 $mesage="Votre mot de passe est incorrect";
             }
         }else {
             $mesage="le mot de passe du relevznt est incorect";
         }
-        dd($mesage);
     }
 
     public function render()
