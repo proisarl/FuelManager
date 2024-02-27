@@ -20,19 +20,24 @@ class CreateRoleAndPermissionSeeder extends Seeder
     public function run()
     {
         Role::create(["name"=>"Administrateur"]);
-        Role::create(["name"=>"Utilisateur"]);
+        Role::create(["name"=>"Officier"]);
 
         Permission::create(["name"=>"create"]);
         Permission::create(["name"=>"delete"]);
+        Permission::create(["name"=>"update"]);
+        Permission::create(["name"=>"view"]);
+        Permission::create(["name"=>"login"]);
         
         $roleAdmin=Role::find(1);
         $roleAdmin->givePermissionTo("create");
 
         $user=User::find(1);
         $user->assignRole("Administrateur");
+        $user->givePermissionTo("login");
         $users=User::where("id","!=",1)->get();
             foreach ($users as $user1) {
-                $user1->assignRole("Utilisateur");
+                $user1->assignRole("Officier");
+                $user1->givePermissionTo("login");
             }
         
         $this->command->info("Permission seeded!");

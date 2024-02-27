@@ -47,6 +47,6 @@ class User extends Authenticatable
     ];
     public function affectation():HasOne
     {
-        return $this->hasOne(affectation::class);
+        return $this->hasOne(Affectation::class);
     }
 }

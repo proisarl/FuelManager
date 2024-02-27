@@ -12,12 +12,15 @@
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
+                                    @if (session('status')) <i class="alert alert-danger justify-center"> {{session("status")}} <button class="btn btn-link" data-dismiss="alert">×</button></i> @endif
+                                </div>
+                                <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Connectez-Vous! <hr></h1>
                                 </div>
                                 <form class="user" method="POST" action="{{ route('login') }}">
                                     @csrf
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" value="{{ old('email') }}" name="email"
+                                        <input type="text" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" value="{{ old('email') }}" name="email"
                                             id="exampleInputEmail" aria-describedby="emailHelp"
                                             placeholder="Entrer l'adresse e-mail..." autofocus>
                                             @error('email')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
