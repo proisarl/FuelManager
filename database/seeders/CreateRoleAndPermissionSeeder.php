@@ -30,7 +30,7 @@ class CreateRoleAndPermissionSeeder extends Seeder
 
         $user=User::find(1);
         $user->assignRole("Administrateur");
-        $users=User::where("id","!=",1);
+        $users=User::where("id","!=",1)->get();
             foreach ($users as $user1) {
                 $user1->assignRole("Utilisateur");
             }
