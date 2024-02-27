@@ -30,19 +30,20 @@ class RemiseReprise extends Component
                     "releve"=>Auth::user()->id,
                     "commentaire"=>$this->remise["commentaire"]
                 ]);
+                $this->dispatch('event', ['type' => 'success', 'message' => "Enregistrement Reussi "]);
+                sleep(3);
                 return redirect()->to('home');
             } else {
-                $mesage="Votre mot de passe est incorrect";
+                $this->dispatch('event', ['type' => 'error', 'message' => "Votre mot de passe est incorrect"]);
             }
         }else {
-            $mesage="le mot de passe du relevznt est incorect";
+            $this->dispatch('event', ['type' => 'error', 'message' => "le mot de passe du relevant est incorect"]);
         }
     }
 
     public function render()
-    {
+    { 
         $this->users=User::role('Officier')->where("id","!=",Auth::user()->id)->get();
-        // Role::where("name","Utilisateur")->get();
         return view('livewire.remise-reprise');
     }
 }

@@ -1,10 +1,8 @@
-window.addEventListener('success',event => {
-    // $('#add_information').modal('hide');
-    // var message="L'operation a Reussi";
-    // if (event.detail.message) {
-    //     message=event.detail.message;
-    // }
-    swal("Success",message, "success");
+window.addEventListener('event',event => {
+    Swal.fire({
+        text: event.detail[0].message,
+        icon: event.detail[0].type,
+    });
 });
 window.addEventListener('erreur',event => {
     var message="Une Erreur s'est Produite";

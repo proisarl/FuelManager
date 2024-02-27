@@ -12,7 +12,8 @@
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
-                                    @if (session('status')) <i class="alert alert-danger justify-center"> {{session("status")}} <button class="btn btn-link" data-dismiss="alert">×</button></i> @endif
+                                    
+                                    @if (session('status')) @php toast(\Session::get('status'),'error'); @endphp @endif
                                 </div>
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Connectez-Vous! <hr></h1>
