@@ -23,6 +23,10 @@ class CreateUserSeeder extends Seeder
             ["id"=>3,"name"=>"MUHINDO MUSAFIRI Emmanuel","matricule"=>"1919","email"=>"emmanuel@sa.com",'password' => static::$password ??= Hash::make('password')],
             ["id"=>4,"name"=>"MUTULA MURANIRA Moise","matricule"=>"1919","email"=>"moise@sa.com",'password' => static::$password ??= Hash::make('password')],
             ["id"=>5,"name"=>"HENRY KALAMBA Willy","matricule"=>"1919","email"=>"willy@sa.com",'password' => static::$password ??= Hash::make('password')],
+            ["id"=>6,"name"=>"SALEH MURISHO Felicien","matricule"=>"1919","email"=>"felicien@sa.com",'password' => static::$password ??= Hash::make('password')],
+            ["id"=>7,"name"=>"YUMBA MUKEMA Philo","matricule"=>"1919","email"=>"philo@sa.com",'password' => static::$password ??= Hash::make('password')],
+            ["id"=>8,"name"=>"KABAMBA MISENGA Christian","matricule"=>"1919","email"=>"christian@sa.com",'password' => static::$password ??= Hash::make('password')],
+            ["id"=>9,"name"=>"KITUMAINI SUKALI Heritier","matricule"=>"1919","email"=>"heritier@sa.com",'password' => static::$password ??= Hash::make('password')],
         ];
         foreach($users as $user){
             User::create($user);
