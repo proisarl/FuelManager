@@ -19,12 +19,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('password/expired', 'App\Http\Controllers\Controller@expired')->name('user.expired');
 Route::get('/', function () {
     return view('auth.welcome');
 });
 Route::group([
     'namespace' => 'App\Http\Controllers',
-    'middleware'=>['auth'],
+    'middleware'=>['auth',"password_expired"],
     // 'prefix' => 'prois',
 ], function(){
     Route::get('/home', 'Controller@index');

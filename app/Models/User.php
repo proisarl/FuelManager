@@ -24,6 +24,7 @@ class User extends Authenticatable
         'email',
         'matricule',
         'password',
+        'password_changed_at',
     ];
 
     /**

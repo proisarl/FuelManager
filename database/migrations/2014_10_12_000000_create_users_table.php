@@ -17,13 +17,14 @@ return new class extends Migration
             $table->string('matricule');
             // $table->string('email')->unique();
             $table->string('email');
+            $table->timestamp('password_changed_at')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */

@@ -24,12 +24,12 @@
                         </div>
                         <div x-show="$wire.remise['id'].length > 0">
                             <label for="">Son Mot de passe <span class="text-warning">*</span></label>
-                            <input wire:model="remise.passwordRelevant" class="form-control" placeholder="*********************">
+                            <input wire:model="remise.passwordRelevant" type="password" class="form-control" placeholder="*********************">
                             @error('remise.passwordRelevant')<small class="text-danger">{{$message}}</small>@enderror
                         </div>
                         <div x-show="$wire.remise['id'].length > 0">
                             <label for="">Votre Mot de passe <span class="text-warning">*</span></label>
-                            <input wire:model="remise.password" class="form-control" placeholder="*********************">
+                            <input wire:model="remise.password" type="password" class="form-control" placeholder="*********************">
                             @error('remise.password')<small class="text-danger">{{$message}}</small>@enderror
                         </div>
                         <div class="mt-2">

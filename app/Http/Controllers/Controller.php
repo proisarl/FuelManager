@@ -25,4 +25,9 @@ class Controller extends BaseController
         }
         return view('index');
     }
+    public function expired()
+    {
+        $status = (is_null(Auth::user()->password_changed_at))?"default":"expired";
+        return view('auth.expired',compact("status"));
+    }
 }
