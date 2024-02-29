@@ -30,8 +30,8 @@ class RemiseReprise extends Component
                     "releve"=>Auth::user()->id,
                     "commentaire"=>$this->remise["commentaire"]
                 ]);
-                $this->dispatch('event', ['type' => 'success', 'message' => "Enregistrement Reussi "]);
-                sleep(3);
+                $this->dispatch('event', ['type' => 'success', 'message' => "La Remise Reprise S'est Bien Faite"]);
+                sleep(2);
                 return redirect()->to('home');
             } else {
                 $this->dispatch('event', ['type' => 'error', 'message' => "Votre mot de passe est incorrect"]);

@@ -1,14 +1,12 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-xl-10 col-lg-12 col-md-9">
+        <div class="col-col-10 col-lg-12 col-md-9">
             <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
+                    @if ($visibilite==false)
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="p-5">
-                                <div class="text-center">
-                                    @if (session('status')) @php toast(\Session::get('status'),'error'); @endphp @endif
-                                </div>
                                 <div class="alert alert-success">
                                     <i class="fa fa-info"></i> Votre mot de passe a expiré, veuillez le changer.
                                 </div>
@@ -55,6 +53,20 @@
                             </div>
                         </div>
                     </div>
+                    @else
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="p-5">
+                                <div class="alert alert-success">
+                                    <a href="{{ url('home')}}" class="btn btn-success"><i class="bi bi-box-arrow-in-right"></i> Se connecter Maintenant</a>
+                                    <i class="fa fa-info"></i> Le Changement de Mot de passe s'est Bien fait.
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@ class Consommation extends Component
         $this->consommation["pompiste"]="TEst";
         $this->consommation["affectation_id"]=Auth::user()->affectation->id;
         ModelsConsommation::firstOrCreate($this->consommation);
-        $this->dispatch('event', ['type' => 'success', 'message' => "Enregistrement Reussi "]);
+        $this->dispatch('event', ['type' => 'success', 'message' => "Nouvelle Consommation Ajoutée "]);
         $this->reset("consommation");
     }
     public function render()

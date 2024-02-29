@@ -12,19 +12,24 @@ use Livewire\Component;
 class PasswordExpired extends Component
 {
     public array $users;
+    public $visibilite;
     public function rules(){
         return (new PasswordExpiredRequest())->rules(); 
     }
     public function change(){
-        // $this->validate();
+        $this->validate();
         Auth::user()->update([
             'password' => Hash::make($this->users["password"]),
             'password_changed_at' => Carbon::now()->toDateTimeString()
         ]);
+        sleep(2);
+        $this->dispatch('event', ['type' => 'success', 'message' => "Le mot de Passe Est Bien Changé "]);
+        $this->reset("users");
     }
     public function render()
     {
-        toast("Vous devez Charger le mot de passe par defaut",'error');
+        $this->visibilite=boolval(Auth::user()->password_changed_at);
+        ($this->visibilite) ? toast("Vous Venez De Changer Le Mot de Passe",'success') : toast("Vous devez Charger le mot de passe par defaut",'error');
         return view('livewire.auth.password-expired');
     }
 }

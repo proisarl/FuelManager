@@ -18,11 +18,6 @@ class Controller extends BaseController
         // toast('Question Toast','question');
         // toast('Question Toast','question');
         // toast('Error Toast','error');
-        $permission=Auth::user()->can("login");
-        if (!$permission) {
-            Auth::logout();
-            return redirect()->to('login')->with('status',"Vous n'avez Pas la Permission Pour L'Instant");
-        }
         return view('index');
     }
     public function expired()

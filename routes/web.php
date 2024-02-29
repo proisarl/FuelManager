@@ -19,21 +19,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('password/expired', 'App\Http\Controllers\Controller@expired')->name('user.expired');
 Route::get('/', function () {
     return view('auth.welcome');
 });
 Route::group([
     'namespace' => 'App\Http\Controllers',
-    'middleware'=>['auth',"password_expired"],
+    'middleware'=>['auth',"permission_login"],
     // 'prefix' => 'prois',
 ], function(){
-    Route::get('/home', 'Controller@index');
-    Route::resources([
-        'poste'=>PosteController::class,
-        'vehicule'=>VehiculeController::class,
-        'societe'=>SocieteController::class,
-        'affectation'=>AffectationController::class,
-        'consommation'=>ConsommationController::class,
-    ]);
+    Route::group([
+        'middleware'=>["password_expired"],
+    ], function(){
+        Route::get('/home', 'Controller@index');
+        Route::resources([
+            'poste'=>PosteController::class,
+            'vehicule'=>VehiculeController::class,
+            'societe'=>SocieteController::class,
+            'affectation'=>AffectationController::class,
+            'consommation'=>ConsommationController::class,
+        ]);
+       
+    });
+    Route::get('password/expired', 'Controller@expired')->name('user.expired');
+   
 });

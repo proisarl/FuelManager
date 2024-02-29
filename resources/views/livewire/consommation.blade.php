@@ -17,7 +17,7 @@
                     <select class="form-control" wire:model="consommation.companie">
                         <option value="">Selectionner..... </option>
                         <option>KAMOA</option>
-                        <option>Sous-Traitance</option>
+                        <option>Autre</option>
                     </select>
                     @error('consommation.companie')<small class="text-danger">{{$message}}</small>@enderror
                 </div>
