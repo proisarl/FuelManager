@@ -8,7 +8,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
-use Spatie\Permission\Models\Role;
 
 class RemiseReprise extends Component
 {
@@ -24,6 +23,8 @@ class RemiseReprise extends Component
         if (Hash::check($this->remise["passwordRelevant"],$getUserReleve->password)) {
             if (Hash::check($this->remise["password"],Auth::user()->password)) {
                 $getUserReleve->givePermissionTo("login");
+                $getUserReleve->revokePermissionTo("logout");
+                Auth::user()->givePermissionTo("logout");
                 Auth::user()->revokePermissionTo("login");
                 ModelsRemiseReprise::firstOrCreate([
                     "relevant"=>$this->remise["id"],
@@ -43,7 +44,8 @@ class RemiseReprise extends Component
 
     public function render()
     { 
-        $this->users=User::role('Officier')->where("id","!=",Auth::user()->id)->get();
+        $this->users=User::role('Officier')->where("id","!=",Auth::user()->id)->permission('logout')->get();
+        // $this->users=User::role('Officier')->where("id","!=",Auth::user()->id)->get();
         return view('livewire.remise-reprise');
     }
 }

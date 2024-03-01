@@ -61,10 +61,13 @@
                   Parametre
               </a>
               <div class="dropdown-divider"></div>
+              @role("Administrateur") 
               <button class="dropdown-item" onclick="logout();">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Deconnexion
-              </button>
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Deconnexion
+                </button>
+                @endrole
+              
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
             </form>

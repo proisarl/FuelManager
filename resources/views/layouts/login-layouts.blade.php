@@ -9,6 +9,8 @@
   <title>Login</title>
   <link href="{{ url("/storage/telechargement.png")}}" rel="icon">
   <link href="{{ url("/storage/telechargement.png")}}" rel="apple-touch-icon">
+  <link href="{!! asset('template/vendor/bootstrap-icons/bootstrap-icons.css') !!}" rel="stylesheet">
+  <link href="{!! asset('template/vendor/boxicons/css/boxicons.css') !!}" rel="stylesheet">
   <link href="{!! asset('template/vendor/fontawesome-free/css/all.min.css')!!}" rel="stylesheet" type="text/css">
   <link href="{!! asset("template/css/sb-admin-2.min.css") !!}" rel="stylesheet">
   <link rel="stylesheet" href="{!! asset("template/vendor/toaster/bootstrap-toaster.css") !!}" />
@@ -16,6 +18,7 @@
   <body class="bg-gradient-primary">
     <div class="container-scroller">
         @yield('contenu')
+        @include('layouts.partials._footer')
   </body>
   <script src="{!! asset('template/vendor/jquery/jquery.min.js') !!}"></script>
   <script src="{!! asset('template/vendor/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>

@@ -8,6 +8,7 @@
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="alert alert-success">
+                                    <p>Bonjour, {{Auth::user()->name}}</p>
                                     <i class="fa fa-info"></i> Votre mot de passe a expiré, veuillez le changer.
                                 </div>
                                 <form class="user" wire:submit="change">
