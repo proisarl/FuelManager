@@ -16,7 +16,6 @@ class Consommation extends Component
     }
     public function save(){
         $this->validate();
-        $this->consommation["pompiste"]="TEst";
         $this->consommation["affectation_id"]=Auth::user()->affectation->id;
         ModelsConsommation::firstOrCreate($this->consommation);
         $this->dispatch('event', ['type' => 'success', 'message' => "Nouvelle Consommation Ajoutée "]);

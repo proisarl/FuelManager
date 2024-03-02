@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Consommation;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Validation\Rules\Can;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Exportable;
@@ -37,6 +38,7 @@ final class ListeConsommationComponent extends PowerGridComponent
 
     public function datasource(): Builder
     {
+        
         return Consommation::query();
     }
 

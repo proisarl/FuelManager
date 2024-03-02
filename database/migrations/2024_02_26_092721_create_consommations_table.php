@@ -16,11 +16,15 @@ return new class extends Migration
             $table->foreignId('affectation_id')->constrained()->onDelete('cascade');
             // $table->foreignId('vehicule_id')->constrained()->onDelete('cascade');
             $table->string("companie");
-            $table->integer("littre");
-            $table->integer("index");
+            $table->string("littre");
+            $table->string("index");
             $table->string("chauffeur");
             $table->string("plaque");
             $table->string("pompiste");
+            $table->string("department");
+            $table->string("engin");
+            $table->string("indexdepart");
+            $table->string("indexcloture");
             $table->timestamps();
             $table->softDeletes();
         });

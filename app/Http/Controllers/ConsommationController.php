@@ -12,7 +12,7 @@ class ConsommationController extends Controller
      */
     public function index()
     {
-        //
+        return view("consommation-pump");
     }
 
     /**

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Consommation extends Model
 {
     use HasFactory,SoftDeletes;
-    protected $fillable=["plaque","littre","index","companie","chauffeur","affectation_id","pompiste"];
+    protected $guarded=[];
     public function affectation():BelongsTo
     {
         return $this->belongsTo(Affectation::class,"affectation_id");

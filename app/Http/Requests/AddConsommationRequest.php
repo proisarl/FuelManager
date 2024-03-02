@@ -24,8 +24,13 @@ class AddConsommationRequest extends FormRequest
         return [
             "consommation.chauffeur"=>"required",
             "consommation.plaque"=>"required",
-            "consommation.companie"=>"required",
+            "consommation.companie"=>"required|string",
             "consommation.littre"=>"required|integer",
+            "consommation.department"=>"required|string|min:3",
+            "consommation.engin"=>"required|string|min:3",
+            "consommation.indexdepart"=>"required|integer",
+            "consommation.indexcloture"=>"required|integer",
+            "consommation.pompiste"=>"required|string",
             "consommation.index"=>"required|integer",
         ];
     }

@@ -17,10 +17,9 @@
         Interface
     </div>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" disable data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="{{route("consommation.index")}}"  >
             <i class="fas fa-fw fa-cog"></i>
-            <span>Suivi</span>
+            <span>Consommations</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             {{-- <div class="bg-white py-2 collapse-inner rounded">
