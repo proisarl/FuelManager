@@ -28,7 +28,7 @@ Route::group([
     // 'prefix' => 'prois',
 ], function(){
     Route::group([
-        // 'middleware'=>["password_expired"],
+        'middleware'=>["password_expired"],
     ], function(){
         Route::get('/home', 'Controller@index');
         Route::resources([

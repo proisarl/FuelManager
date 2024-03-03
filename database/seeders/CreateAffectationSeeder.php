@@ -29,7 +29,10 @@ class CreateAffectationSeeder extends Seeder
             ["user_id"=>11,"poste_id"=>2],
             ["user_id"=>12,"poste_id"=>3],
             ["user_id"=>13,"poste_id"=>4],
-            ["user_id"=>14,"poste_id"=>5]
+            ["user_id"=>14,"poste_id"=>5],
+            ["user_id"=>15,"poste_id"=>6],
+            ["user_id"=>16,"poste_id"=>6],
+            ["user_id"=>17,"poste_id"=>6]
         ];
         foreach($affectations as $affectation){
             Affectation::create($affectation);

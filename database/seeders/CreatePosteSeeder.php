@@ -20,7 +20,8 @@ class CreatePosteSeeder extends Seeder
             ["id"=>2,"designation"=>"KANSOKO Mine Fuel Station"],
             ["id"=>3,"designation"=>"KAMOA 1 Fuel Station"],
             ["id"=>4,"designation"=>"KAKULA South Fuel station"],
-            ["id"=>5,"designation"=>"KAKULA North Oil Fuel Station"]
+            ["id"=>5,"designation"=>"KAKULA North Oil Fuel Station"],
+            ["id"=>6,"designation"=>"KAKULA North"]
         ];
         foreach($posts as $post){
             Poste::create($post);
