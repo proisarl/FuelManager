@@ -2,6 +2,20 @@
     <form wire:submit="save">
         <div class="row justify-content-center">
             <div class="col-lg-6">
+                    @role("Administrateur")
+                        <div class="mt-2">
+                            <label class="text-label">Selectionner Un Officier <span class="text-warning">*</span></label>
+                            {{-- <input type="text" wire:model="consommation.companie" class="form-control"> --}}
+                            <select wire:model.live="consommation.affectation_id" class="form-control">
+                                <option value="">Select......</option>
+                                @foreach ($officiers as $officier)
+                                    <option value="{{$officier->affectation?->id}}">{{$officier->name}}</option>
+                                @endforeach
+                            </select>
+                            @error('consommation.affectation_id')<small class="text-danger">{{$message}}</small>@enderror
+                        </div>
+                    @endrole
+                    
                 <div class="mt-2">
                     <label class="text-label">Companie <span class="text-warning">*</span></label>
                     <input type="text" wire:model="consommation.companie" class="form-control">

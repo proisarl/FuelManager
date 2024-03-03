@@ -1,8 +1,8 @@
 @extends('layouts.global-layouts')
 @section('contenu')  
-@role("Administrateur")
+{{-- @role("Administrateur")
 <livewire:liste-consommation-component/>
-@endrole
+@endrole --}}
 @role("Officier")
 <livewire:consommation>
 @endrole

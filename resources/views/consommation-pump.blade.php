@@ -1,6 +1,6 @@
 @extends('layouts.global-layouts')
 @section('contenu')  
-@role("Officier")
+{{-- @role("Officier") --}}
 <livewire:liste-consommation-component/>
-@endrole
+{{-- @endrole --}}
 @endsection

@@ -4,25 +4,37 @@ namespace App\Livewire;
 
 use App\Http\Requests\AddConsommationRequest;
 use App\Models\Consommation as ModelsConsommation;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Can;
 use Livewire\Component;
 
 class Consommation extends Component
 {
     public array $consommation;
+    public $officiers;
+    // public $messagePost;
 
     public function rules(){
         return (new AddConsommationRequest())->rules(); 
     }
     public function save(){
-        $this->validate();
-        $this->consommation["affectation_id"]=Auth::user()->affectation->id;
-        ModelsConsommation::firstOrCreate($this->consommation);
-        $this->dispatch('event', ['type' => 'success', 'message' => "Nouvelle Consommation Ajoutée "]);
-        $this->reset("consommation");
+        // $this->validate();
+        if (!Auth::user()->hasRole("Administrateur")) {
+            $this->consommation["affectation_id"]=Auth::user()->affectation->id;
+        }
+        if (!empty($this->consommation["affectation_id"])) {
+            $this->consommation["user_id"]=Auth::user()->id;
+            ModelsConsommation::firstOrCreate($this->consommation);
+            $this->dispatch('event', ['type' => 'success', 'message' => "Nouvelle Consommation Ajoutée "]);
+            $this->reset("consommation");
+        }else{
+            $this->dispatch('event', ['type' => 'error', 'message' => "Il semble que l'officier selectionné n'a pas un Poste ou il n'est pas valide, Veuillez Preciser Le Nom de L'officier, "]); 
+        }
     }
     public function render()
     {
+        $this->officiers=User::role('Officier')->where("id","!=",Auth::user()->id)->get();
         return view('livewire.consommation');
     }
 }
