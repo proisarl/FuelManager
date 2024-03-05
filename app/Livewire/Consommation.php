@@ -13,6 +13,7 @@ class Consommation extends Component
 {
     public array $consommation;
     public $officiers;
+    public $pompes=['Red', 'Orange', 'Yellow'];
     // public $messagePost;
 
     public function rules(){
@@ -31,6 +32,19 @@ class Consommation extends Component
         }else{
             $this->dispatch('event', ['type' => 'error', 'message' => "Il semble que l'officier selectionné n'a pas un Poste ou il n'est pas valide, Veuillez Preciser Le Nom de L'officier, "]); 
         }
+    }
+    public function userEmail(){
+       try {
+            $this->pompes=User::findOrNew($this->consommation)
+            ->first()
+            ->affectation()?->first()
+            ->poste()?->first()
+            ->pompes()?->pluck("id","designation")->toArray();
+       } catch (\Throwable $th) {
+            $this->reset("pompes"); 
+       }
+       $this->pompes=['Red', 'Orange'];
+    //    dd($this->pompes);
     }
     public function render()
     {

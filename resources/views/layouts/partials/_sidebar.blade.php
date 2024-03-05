@@ -30,16 +30,21 @@
         </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" href="{{route("pompe.index")}}" ">
             <i class="fas fa-fw fa-wrench"></i>
-            <span>Utilities</span>
+            <span>Gestion Pompe/Station</span>
         </a>
     </li>
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
         Module Complementaire
     </div>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route("vehicule.index")}}">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Rapport Des Vehicules</span>
+        </a>
+    </li>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">

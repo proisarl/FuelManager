@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Vehicule;
+use App\Models\Pompe;
 use Illuminate\Http\Request;
 
-class VehiculeController extends Controller
+class PompeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view("vehicule");
+        return view("pompes");
     }
 
     /**
@@ -34,7 +34,7 @@ class VehiculeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Vehicule $vehicule)
+    public function show(Pompe $pompe)
     {
         //
     }
@@ -42,7 +42,7 @@ class VehiculeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Vehicule $vehicule)
+    public function edit(Pompe $pompe)
     {
         //
     }
@@ -50,7 +50,7 @@ class VehiculeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Vehicule $vehicule)
+    public function update(Request $request, Pompe $pompe)
     {
         //
     }
@@ -58,7 +58,7 @@ class VehiculeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Vehicule $vehicule)
+    public function destroy(Pompe $pompe)
     {
         //
     }

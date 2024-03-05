@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AffectationController;
 use App\Http\Controllers\ConsommationController;
+use App\Http\Controllers\PompeController;
 use App\Http\Controllers\PosteController;
 use App\Http\Controllers\SocieteController;
 use App\Http\Controllers\VehiculeController;
@@ -37,6 +38,8 @@ Route::group([
             'societe'=>SocieteController::class,
             'affectation'=>AffectationController::class,
             'consommation'=>ConsommationController::class,
+            'pompe'=>PompeController::class,
+            'vehicule'=>VehiculeController::class,
         ]);
        
     });
