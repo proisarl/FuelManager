@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use GuzzleHttp\Psr7\Message;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AddConsommationRequest extends FormRequest
@@ -31,7 +32,9 @@ class AddConsommationRequest extends FormRequest
             "consommation.indexdepart"=>"required|integer",
             "consommation.indexcloture"=>"required|integer",
             "consommation.pompiste"=>"required|string",
+            "consommation.pompe_id"=>"required",
             "consommation.index"=>"required|integer",
         ];
+       
     }
 }

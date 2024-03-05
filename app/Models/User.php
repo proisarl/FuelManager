@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -49,5 +50,9 @@ class User extends Authenticatable
     public function affectation():HasOne
     {
         return $this->hasOne(Affectation::class);
+    }
+    public function Poste():BelongsToMany
+    {
+        return $this->belongsToMany(Poste::class,'affectations',"poste_id")->withPivot("id","created_at")->whereNull('affectations.deleted_at');
     }
 }

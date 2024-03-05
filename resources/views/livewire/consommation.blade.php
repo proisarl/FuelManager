@@ -1,16 +1,8 @@
-<div x-data="{ colors: $wire.pompes }">
+<div x-data="{ pompes: @entangle('pompes') }">
     <form wire:submit="save">
         <div class="row justify-content-center">
             <div class="col-lg-6">
                     @role("Administrateur")
-                        {{-- <div class="mt-2">
-                            <ul x-data="{ colors: ['Red', 'Orange', 'Yellow'] }">
-                                <template x-for="color in colors">
-                                    <li x-text="color"></li>
-                                </template>
-                            </ul>
-                        </div> --}}
-                        
                     <div class="mt-2">
                         <label class="text-label">Selectionner Un Officier <span class="text-warning">*</span></label>
                         <div class="input-group">
@@ -18,24 +10,18 @@
                                 <option value="">Select......</option>
                                 @foreach ($officiers as $officier)
                                     <option value="{{$officier->affectation?->id}}">{{$officier->name}}</option>
-                                    {{-- <option value="{{$officier->affectation?->id}}">{{$officier->affectation?->poste->pompes}}</option> --}}
                                 @endforeach
                             </select>
                             @error('consommation.affectation_id')<small class="text-danger">{{$message}}</small>@enderror
                             <i class="input-group-text">Pompe N°</i>
-                            {{-- <select class="form-control" wire:model="">
-                                @foreach ($pompes as $pompe)
-                                    <option value="{{$pompe->id}}">{{$pompe->designation}}</option>
-                            </select> --}}
-                            <i x-text="$wire.pompes"></i>
-                            <select>
-                                <template x-for="color in colors">
-                                    <option value=""><li x-text="color"></li></option>
-                                    {{-- <li x-text="color"></li> --}}
+                            <select class="form-control col-lg-2" wire:model="consommation.pompe_id">
+                                <option value="">Select....</option>
+                                <template x-for="[key, value] of Object.entries(pompes)" :key="key">
+                                    <option :value="key" x-text="value"></option>
                                 </template>
                             </select>
-                            {{-- { colors: ['Red', 'Orange', 'Yellow'] } --}}
                         </div>
+                        @error('consommation.pompe_id')<small class="text-danger">{{$message}}</small>@enderror
                     </div>
                     @endrole
                 <div class="mt-2">

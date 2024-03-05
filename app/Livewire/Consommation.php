@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Http\Requests\AddConsommationRequest;
+use App\Models\Affectation;
 use App\Models\Consommation as ModelsConsommation;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -13,17 +14,18 @@ class Consommation extends Component
 {
     public array $consommation;
     public $officiers;
-    public $pompes=['Red', 'Orange', 'Yellow'];
+    public $pompes;
     // public $messagePost;
 
     public function rules(){
         return (new AddConsommationRequest())->rules(); 
     }
     public function save(){
-        // $this->validate();
+        $this->validate();
         if (!Auth::user()->hasRole("Administrateur")) {
             $this->consommation["affectation_id"]=Auth::user()->affectation->id;
         }
+        // dd($this->consommation);
         if (!empty($this->consommation["affectation_id"])) {
             $this->consommation["user_id"]=Auth::user()->id;
             ModelsConsommation::firstOrCreate($this->consommation);
@@ -34,16 +36,14 @@ class Consommation extends Component
         }
     }
     public function userEmail(){
-       try {
-            $this->pompes=User::findOrNew($this->consommation)
-            ->first()
-            ->affectation()?->first()
-            ->poste()?->first()
-            ->pompes()?->pluck("id","designation")->toArray();
+       try { 
+            $this->pompes=Affectation::find($this->consommation["affectation_id"])
+                            ->poste
+                            ->pompes->pluck("designation","id")->toArray();
        } catch (\Throwable $th) {
             $this->reset("pompes"); 
        }
-       $this->pompes=['Red', 'Orange'];
+    //    $this->pompes=['Red', 'Orange'];
     //    dd($this->pompes);
     }
     public function render()
