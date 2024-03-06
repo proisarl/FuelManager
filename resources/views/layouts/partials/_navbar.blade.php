@@ -82,9 +82,9 @@
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-2">
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-    @role("Officier") <a href="#" class="d-sm-inline-block btn btn-sm btn-danger shadow-sm " data-toggle="modal" data-target="#logoutModal"><i
+    @role("OfficicierDirect") <a href="#" class="d-sm-inline-block btn btn-sm btn-danger shadow-sm " data-toggle="modal" data-target="#logoutModal"><i
             class="fas fa-user fa-sm text-white-50"></i> Remise-Reprise</a>
-            @endrole
+    @endrole
     </div>
 
   <livewire:remise-reprise>

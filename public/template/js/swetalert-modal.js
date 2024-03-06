@@ -4,12 +4,20 @@ window.addEventListener('event',event => {
         icon: event.detail[0].type,
     });
 });
-window.addEventListener('erreur',event => {
-    var message="Une Erreur s'est Produite";
-    if (event.detail.message) {
-        message=event.detail.message;
-    }
-    swal("Erreur",message , "error");
+// window.addEventListener('erreur',event => {
+//     var message="Une Erreur s'est Produite";
+//     if (event.detail.message) {
+//         message=event.detail.message;
+//     }
+//     swal("Erreur",message , "error");
+// });
+window.addEventListener('eventModal',event => {
+    // alert(event.detail[0].modal);
+    $("#showVehicule").modal('show');
+    // Swal.fire({
+    //     text: event.detail[0].message,
+    //     icon: event.detail[0].type,
+    // });
 });
 window.addEventListener('Edit-accouchement',event => {
     $('#edit_information_accouchement').modal('show');

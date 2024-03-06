@@ -29,6 +29,8 @@ class RemiseReprise extends Component
                 ModelsRemiseReprise::firstOrCreate([
                     "relevant"=>$this->remise["id"],
                     "releve"=>Auth::user()->id,
+                    "indexfin"=>$this->remise["indexfin"],
+                    "indexdepart"=>$this->remise["indexdepart"],
                     "commentaire"=>$this->remise["commentaire"]
                 ]);
                 $this->dispatch('event', ['type' => 'success', 'message' => "La Remise Reprise S'est Bien Faite"]);
@@ -44,7 +46,8 @@ class RemiseReprise extends Component
 
     public function render()
     { 
-        $this->users=User::role('Officier')->where("id","!=",Auth::user()->id)->permission('logout')->get();
+        $this->users=Auth::user()->affectation->poste->users->where("id","!=",Auth::user()->id);
+        // User::role('Officier')->where("id","!=",Auth::user()->id)->permission('logout')->get()->;
         // $this->users=User::role('Officier')->where("id","!=",Auth::user()->id)->get();
         return view('livewire.remise-reprise');
     }

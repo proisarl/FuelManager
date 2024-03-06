@@ -26,6 +26,8 @@ class ReleveRequest extends FormRequest
             "remise.passwordRelevant"=>"required",
             "remise.password"=>"required",
             "remise.commentaire"=>"required|min:3",
+            "remise.indexdepart"=>"required",
+            "remise.indexfin"=>"required",
         ];
     }
 }

@@ -6,7 +6,7 @@ use App\Http\Controllers\PompeController;
 use App\Http\Controllers\PosteController;
 use App\Http\Controllers\SocieteController;
 use App\Http\Controllers\VehiculeController;
-
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.welcome');
+    return redirect()->to("/login");
 });
 Route::group([
     'namespace' => 'App\Http\Controllers',

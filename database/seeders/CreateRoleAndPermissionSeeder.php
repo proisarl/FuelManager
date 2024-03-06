@@ -21,6 +21,7 @@ class CreateRoleAndPermissionSeeder extends Seeder
     {
         Role::create(["name"=>"Administrateur"]);
         Role::create(["name"=>"Officier"]);
+        Role::create(["name"=>"OfficicierDirect"]);
 
         Permission::create(["name"=>"create"]);
         Permission::create(["name"=>"delete"]);
@@ -29,20 +30,19 @@ class CreateRoleAndPermissionSeeder extends Seeder
         Permission::create(["name"=>"login"]);
         Permission::create(["name"=>"logout"]);
         
-        // $roleAdmin=Role::find(1);
-        // $roleAdmin->givePermissionTo("create");
-
         $users=User::whereIn("id",[1,18])->get();
         foreach ($users as $user) {
             $user->givePermissionTo("login");
-            // $user->revokePermissionTo("logout");
             $user->assignRole("Administrateur");
+            $user->assignRole("Officier");
+
             // $user->givePermissionTo("login");
         }
         $usersRoles=User::where("id","!=",1)->get();
         $usersPermisions=User::whereIn("id",[2,3,4,5,16])->get();
         foreach ($usersRoles as $usersRole1) {
             $usersRole1->assignRole("Officier");
+            $usersRole1->assignRole("OfficicierDirect");
             $usersRole1->givePermissionTo("logout");
         }
         foreach ($usersPermisions as $user1) {

@@ -14,7 +14,7 @@
                             </select>
                             @error('consommation.affectation_id')<small class="text-danger">{{$message}}</small>@enderror
                             <i class="input-group-text">Pompe N°</i>
-                            <select class="form-control col-lg-2" wire:model="consommation.pompe_id">
+                            <select class="form-control col-lg-2" wire:model.live="consommation.pompe_id">
                                 <option value="">Select....</option>
                                 <template x-for="[key, value] of Object.entries(pompes)" :key="key">
                                     <option :value="key" x-text="value"></option>
@@ -26,8 +26,23 @@
                     @endrole
                 <div class="mt-2">
                     <label class="text-label">Companie <span class="text-warning">*</span></label>
+                    <div class="input-group">
                     <input type="text" wire:model="consommation.companie" class="form-control">
+                    @role("OfficicierDirect")
+                        <i class="input-group-text">Pompe N°</i>
+                        <select class="form-control col-lg-2" wire:model.live="consommation.pompe_id">
+                            <option value="">Select....</option>
+                            @foreach ($touspompes as $touspompe)
+                                <option value="{{$touspompe->id}}">{{$touspompe->designation}}</option>
+                            @endforeach
+                        </select>
+                    @endrole
+                        </div>
+                        {{-- {{$touspompes}} --}}
                     @error('consommation.companie')<small class="text-danger">{{$message}}</small>@enderror
+                    @role("OfficicierDirect")
+                        @error('consommation.pompe_id')<small class="text-danger">{{$message}}</small>@enderror
+                    @endrole
                 </div>
                 <div class="mt-2">
                     <label class="text-label">Departement<span class="text-warning">*</span></label>
@@ -53,7 +68,7 @@
             <div class="col-lg-6">
                 <div class="mt-2">
                     <label class="text-label">Index de Depart <span class="text-warning">*</span></label>
-                    <input type="number" class="form-control" wire:model="consommation.indexdepart">
+                    <input type="number" class="form-control" wire:model.live="consommation.indexdepart">
                     @error('consommation.indexdepart')<small class="text-danger">{{$message}}</small>@enderror
                 </div>
                 <div class="mt-2">

@@ -32,6 +32,14 @@
                             <input wire:model="remise.password" type="password" class="form-control" placeholder="*********************">
                             @error('remise.password')<small class="text-danger">{{$message}}</small>@enderror
                         </div>
+                        <div class="input-group mt-2" x-show="$wire.remise['id'].length > 0">
+                            <span class="input-group-text">Index depart</span>
+                            <input type="number" aria-label="First name" wire:model="remise.indexdepart" class="form-control">
+                            <span class="input-group-text">Index Fin</span>
+                            <input type="number" aria-label="Last name" wire:model="remise.indexfin" class="form-control">
+                        </div>
+                        @error('remise.indexdepart')<small class="text-danger">{{$message}}</small>@enderror
+                        @error('remise.indexdepart')<small class="text-danger">{{$message}}</small>@enderror
                         <div class="mt-2">
                             <label for="">Laisser Un Commentaire <span class="text-warning">*</span></label>
                             <textarea cols="30" wire:model="remise.commentaire" rows="3" class="form-control"></textarea>

@@ -51,7 +51,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(Affectation::class);
     }
-    public function Poste():BelongsToMany
+    public function poste():BelongsToMany
     {
         return $this->belongsToMany(Poste::class,'affectations',"poste_id")->withPivot("id","created_at")->whereNull('affectations.deleted_at');
     }
