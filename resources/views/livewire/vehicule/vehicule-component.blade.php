@@ -8,24 +8,37 @@
                         <tr class="alert alert-info">
                             {{-- <th scope="col">Index Debut</th>
                             <th scope="col">Index FIn</th> --}}
-                            <td>Quantite Livrée</td>
-                            <td>Kilometre</td>
-                            <td>Nom Engin</td>
-                            <td>Date</td>
-                            <td>Observation</td>
+                            <td><small>Qté. Livrée</small></td>
+                            <td><small>Type v</small></td>
+                            <td><small>Index</small></td>
+                            <td><small>Date</small></td>
+                            <td><small>Observation</small></td>
                         </tr>
                     </thead>
                     <tbody>
+                        <i class="d-none">{{$nombredefois=1}}</i>
                         @foreach ($vehicule as $consommation)
                             <tr>
-                                {{-- <td><small>{{$consommation->indexdepart}}L</small></td>
-                                <td><small>{{$consommation->indexcloture}}L</small></td> --}}
                                 <td><small>{{$consommation->littre}}L</small></td>
-                                <td><small>{{$consommation->engin}}</small></td>
+                                <td><small>{{substr($consommation->typeVehicule?->type,0,8)}}</small></td>
                                 <td><small>{{$consommation->index}}</small></td>
-                                <td><small>{{$consommation->created_at->format("d/m/y H:i")}}</small></td>
-                                <td><small>En attente</small></td>
+                                <td><small>{{$consommation->created_at->format("d/m/y H:i") ?? ""}}</small></td>
+                                @if ($nombredefois > 1)
+                                    @if ($consommation->index < $kilometreNormal)
+                                        <td class="bg-danger"><small>Tentative de vole</small></td>  
+                                    @else
+                                        <td><small>NORMAL</small></td>  
+                                    @endif
+                                @else
+                                <td><small>NORMAL</small></td>  
+                                @endif
+                                @if ($consommation->typeVehicule?->indice=="km")
+                                    <i class="d-none">{{$kilometreNormal=(floatval($consommation->littre) * floatval($consommation->typeVehicule?->consommation)) + floatval($consommation->index)}}</i>    
+                                @elseif($consommation->typeVehicule?->indice=="hr")
+                                    <i class="d-none">{{$kilometreNormal=(floatval($consommation->littre) / floatval($consommation->typeVehicule?->consommation)) + floatval($consommation->index)}}</i>
+                                @endif
                             </tr>
+                            <i class="d-none">{{$nombredefois++}}</i>
                         @endforeach
                     </tbody>
                 </table>

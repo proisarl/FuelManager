@@ -14,11 +14,10 @@
                         <thead>
                             <tr>
                                 <td>Companie</td>
-                                <td>Index Debut</td>
-                                <td>Index FIn</td>
-                                <td>Quantite Livrée</td>
+                                <td>Qté Livrée</td>
                                 <td>Kilometre</td>
-                                <td>Nom Engin</td>
+                                <td>Categorie</td>
+                                <td>Normal</td>
                                 <td>Chauffeur</td>
                                 <td>Pompiste</td>
                                 <td>Date</td>
@@ -26,18 +25,28 @@
                         </thead>
                         <tbody>
                             @if ($vehicule !="")
+                                <i class="d-none">{{$nombredefois=1}}</i>
                                 @foreach ($vehicule as $itemVehicule)
                                 <tr>
-                                    <td><small>{{$itemVehicule->companie}}L</small></td>
-                                    <td><small>{{$itemVehicule->indexdepart}}L</small></td>
-                                    <td><small>{{$itemVehicule->indexcloture}}L</small></td>
+                                    <td><small>{{$itemVehicule->companie}}</small></td>
                                     <td><small>{{$itemVehicule->littre}}L</small></td>
-                                    <td><small>{{$itemVehicule->engin}}</small></td>
                                     <td><small>{{$itemVehicule->index}}</small></td>
+                                    <td><small>{{substr($itemVehicule->typeVehicule?->type,0,15)}}</small></td>
+                                    @if ($nombredefois > 1)
+                                        @if ($itemVehicule->typeVehicule?->indice=="km")
+                                        <td><small>{{floatval($itemVehicule->littre)}} * {{ floatval($itemVehicule->typeVehicule?->consommation)}} + {{floatval($itemVehicule->index)}} = {{(floatval($itemVehicule->littre) * floatval($itemVehicule->typeVehicule?->consommation)) + floatval($itemVehicule->index)}}</small></td>
+                                        @elseif($itemVehicule->typeVehicule?->indice=="hr")
+                                        <td><small>{{floatval($itemVehicule->littre)}} : {{ floatval($itemVehicule->typeVehicule?->consommation)}} + {{floatval($itemVehicule->index)}} = {{(floatval($itemVehicule->littre) / floatval($itemVehicule->typeVehicule?->consommation)) + floatval($itemVehicule->index)}} </small></td>
+                                        @endif
+                                    @else
+                                    <td><small></small></td>
+                                    @endif
+                                    
                                     <td><small>{{$itemVehicule->chauffeur}}</small></td>
                                     <td><small>{{$itemVehicule->pompiste}}</small></td>
                                     <td><small>{{$itemVehicule->created_at->format("d/m/y H:i")}}</small></td>
                                 </tr>
+                                <i class="d-none">{{$nombredefois++}}</i>
                                 @endforeach
                             @endif
                         </tbody>

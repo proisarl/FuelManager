@@ -14,10 +14,8 @@ class MenuNavbar extends Component
 
     public function render()
     {
-        $this->kamoaMonth=Consommation::where("companie","=","kamoa")->orWhere("companie","=","kcs")->sum("littre");
-        $this->sousTraitanceMonth=Consommation::where("companie","!=","kamoa")->orWhere("companie","!=","kcs")->sum("littre");
-        // $this->sousTraitanceDays=Consommation::where("companie","!=","Kamoa")->where("companie","!=","kcs")->sum("littre");
-        // $this->kamoaDays=Consommation::where("companie","=","Kamoa")->where("companie","=","kcs")->sum("littre");
+        $this->kamoaMonth=Consommation::where("companie","kcs")->orWhere("companie","kamoa")->sum("littre");
+        $this->sousTraitanceMonth=Consommation::sum("littre") - $this->kamoaMonth;
         return view('livewire.layouts.menu-navbar');
     }
 }

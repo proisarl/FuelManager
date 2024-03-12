@@ -6,6 +6,7 @@ use App\Http\Requests\AddConsommationRequest;
 use App\Models\Affectation;
 use App\Models\Consommation as ModelsConsommation;
 use App\Models\Pompe;
+use App\Models\TypeVehicule;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Can;
@@ -17,12 +18,15 @@ class Consommation extends Component
     public $officiers;
     public $pompes;
     public $touspompes;
+    public $typeVehicules;
+    public $hs;
     // public $messagePost;
 
     public function rules(){
         return (new AddConsommationRequest())->rules(); 
     }
     public function save(){
+        // dd($this->hs);
         $this->validate();
         if (!Auth::user()->hasRole("Administrateur")) {
             $this->consommation["affectation_id"]=Auth::user()->affectation->id;
@@ -51,7 +55,7 @@ class Consommation extends Component
     }
     public function render()
     {
-        
+        $this->typeVehicules=TypeVehicule::all();
         $this->touspompes = Auth::user()->affectation?->poste->pompes;
         // (empty(boolval(Auth::user()->poste))) ? "vide" : "non" ;
         // $this->touspompes=?->pompes;

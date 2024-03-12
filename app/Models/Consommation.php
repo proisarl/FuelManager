@@ -15,5 +15,9 @@ class Consommation extends Model
     {
         return $this->belongsTo(Affectation::class,"affectation_id");
     }
+    public function typeVehicule():BelongsTo
+    {
+        return $this->belongsTo(typeVehicule::class,"type_vehicule_id");
+    }
 }
 

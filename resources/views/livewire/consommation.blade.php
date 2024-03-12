@@ -56,12 +56,21 @@
                 </div>
                 <div class="mt-2">
                     <label class="text-label">Type Engin <span class="text-warning">*</span></label>
-                    <input type="text" class="form-control" wire:model="consommation.engin">
-                    @error('consommation.engin')<small class="text-danger">{{$message}}</small>@enderror
+                    <select class="form-control" wire:model="consommation.type_vehicule_id">
+                        <option value="">Select....</option>
+                        @foreach ($typeVehicules as $typeVehicule)
+                            <option value="{{$typeVehicule->id}}">{{$typeVehicule->type}}</option>
+                        @endforeach
+                    </select>
+                    @error('consommation.type_vehicule_id')<small class="text-danger">{{$message}}</small>@enderror
                 </div>
                 <div class="mt-2">
+                    
                     <label class="text-label">Km d'Engin <span class="text-warning">*</span></label>
-                    <input type="text" class="form-control" wire:model="consommation.index">
+                    <div class="input-group">
+                        <input type="text" class="form-control" wire:model="consommation.index">
+                        <i class="input-group-text">Cochez si HS<input type="checkbox" wire:model="hs" ></i>
+                    </div>
                     @error('consommation.index')<small class="text-danger">{{$message}}</small>@enderror
                 </div>
             </div>

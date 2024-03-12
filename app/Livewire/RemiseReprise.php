@@ -46,7 +46,7 @@ class RemiseReprise extends Component
 
     public function render()
     { 
-        $this->users=Auth::user()->affectation->poste->users->where("id","!=",Auth::user()->id);
+        $this->users=Auth::user()->affectation?->poste->users->where("id","!=",Auth::user()->id);
         // User::role('Officier')->where("id","!=",Auth::user()->id)->permission('logout')->get()->;
         // $this->users=User::role('Officier')->where("id","!=",Auth::user()->id)->get();
         return view('livewire.remise-reprise');

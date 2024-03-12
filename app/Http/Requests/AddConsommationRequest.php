@@ -28,12 +28,12 @@ class AddConsommationRequest extends FormRequest
             "consommation.companie"=>"required|string",
             "consommation.littre"=>"required|integer",
             "consommation.department"=>"required|string|min:3",
-            "consommation.engin"=>"required|string|min:3",
+            "consommation.type_vehicule_id"=>"required|integer",
             "consommation.indexdepart"=>"required|integer",
             "consommation.indexcloture"=>"required|integer",
             "consommation.pompiste"=>"required|string",
             "consommation.pompe_id"=>"required",
-            "consommation.index"=>"required|integer",
+            "consommation.index"=>"integer|required_if:hs,false",
         ];
        
     }

@@ -16,9 +16,11 @@
                             <label for="">Selectionner Un Rélevant <span class="text-warning">*</span></label>
                             <select wire:model="remise.id" class="form-control">
                                 <option value="">Select ......</option>
+                               @if ($users!="")
                                 @foreach ($users as $user)
-                                    <option value="{{$user->id}}">{{$user->name}}</option>
-                                @endforeach
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                    @endforeach
+                               @endif
                             </select>
                             @error('remise.id')<small class="text-danger">{{$message}}</small>@enderror
                         </div>
