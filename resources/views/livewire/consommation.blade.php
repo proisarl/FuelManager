@@ -1,7 +1,7 @@
 <div x-data="{ pompes: @entangle('pompes') }">
     <form wire:submit="save">
         <div class="row justify-content-center">
-            <div class="col-lg-6">
+            <div class="col-lg-6">                
                     @role("Administrateur")
                     <div class="mt-2">
                         <label class="text-label">Selectionner Un Officier <span class="text-warning">*</span></label>
@@ -27,7 +27,12 @@
                 <div class="mt-2">
                     <label class="text-label">Companie <span class="text-warning">*</span></label>
                     <div class="input-group">
-                    <input type="text" wire:model="consommation.companie" class="form-control">
+                    <select wire:model="consommation.companie" class="form-control">
+                        
+                    </select>
+
+
+
                     @role("OfficicierDirect")
                         <i class="input-group-text">Pompe N°</i>
                         <select class="form-control col-lg-2" wire:model.live="consommation.pompe_id">
@@ -38,7 +43,6 @@
                         </select>
                     @endrole
                         </div>
-                        {{-- {{$touspompes}} --}}
                     @error('consommation.companie')<small class="text-danger">{{$message}}</small>@enderror
                     @role("OfficicierDirect")
                         @error('consommation.pompe_id')<small class="text-danger">{{$message}}</small>@enderror

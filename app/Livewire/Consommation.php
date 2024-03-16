@@ -2,15 +2,16 @@
 
 namespace App\Livewire;
 
-use App\Http\Requests\AddConsommationRequest;
-use App\Models\Affectation;
-use App\Models\Consommation as ModelsConsommation;
-use App\Models\Pompe;
-use App\Models\TypeVehicule;
 use App\Models\User;
+use App\Models\Pompe;
+use Livewire\Component;
+use App\Models\Companie;
+use App\Models\Affectation;
+use App\Models\TypeVehicule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Can;
-use Livewire\Component;
+use App\Http\Requests\AddConsommationRequest;
+use App\Models\Consommation as ModelsConsommation;
 
 class Consommation extends Component
 {
@@ -20,14 +21,16 @@ class Consommation extends Component
     public $touspompes;
     public $typeVehicules;
     public $hs;
+    public $company;
     // public $messagePost;
 
     public function rules(){
         return (new AddConsommationRequest())->rules(); 
     }
     public function save(){
-        // dd($this->hs);
+        dd($this->consommation);
         $this->validate();
+        $this->consommation["plaque"]=str_replace(" ","",str_replace("/","",$this->consommation["plaque"]));
         if (!Auth::user()->hasRole("Administrateur")) {
             $this->consommation["affectation_id"]=Auth::user()->affectation->id;
         }
@@ -40,10 +43,12 @@ class Consommation extends Component
             $this->dispatch('event', ['type' => 'error', 'message' => "Il semble que l'officier selectionné n'a pas un Poste ou il n'est pas valide, Veuillez Preciser Le Nom de L'officier, "]); 
         }
     }
-    // public function getValuePompe(){
-    //     $this->consommation["indexdepart"]=Pompe::find($this->consommation["pompe_id"]);
-    //     // dd($this->pompes);
-    // }
+    public function mount(){
+        $this->typeVehicules=TypeVehicule::all();
+        $this->touspompes = Auth::user()->affectation?->poste->pompes;
+        $this->officiers=User::role('Officier')->where("id","!=",Auth::user()->id)->get();
+        $this->company=Companie::where("status","active");
+    }
     public function userEmail(){
        try { 
             $this->pompes=Affectation::find($this->consommation["affectation_id"])
@@ -55,11 +60,6 @@ class Consommation extends Component
     }
     public function render()
     {
-        $this->typeVehicules=TypeVehicule::all();
-        $this->touspompes = Auth::user()->affectation?->poste->pompes;
-        // (empty(boolval(Auth::user()->poste))) ? "vide" : "non" ;
-        // $this->touspompes=?->pompes;
-        $this->officiers=User::role('Officier')->where("id","!=",Auth::user()->id)->get();
         return view('livewire.consommation');
     }
 }

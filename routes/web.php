@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\AffectationController;
-use App\Http\Controllers\ConsommationController;
+use Illuminate\Auth\Events\Login;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PompeController;
 use App\Http\Controllers\PosteController;
 use App\Http\Controllers\SocieteController;
 use App\Http\Controllers\VehiculeController;
-use Illuminate\Auth\Events\Login;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AffectationController;
+use App\Http\Controllers\ConsommationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +39,6 @@ Route::group([
             'affectation'=>AffectationController::class,
             'consommation'=>ConsommationController::class,
             'pompe'=>PompeController::class,
-            'vehicule'=>VehiculeController::class,
         ]);
        
     });

@@ -11,22 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('remise_reprises', function (Blueprint $table) {
+        Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->integer("relevant");
-            $table->integer("releve");
-            $table->text("indexdepart")->nullable();
-            $table->text("indexfin")->nullable();
-            $table->text("commentaire");
+            $table->string("designation");
+            $table->string("status");
             $table->timestamps();
             $table->softDeletes();
         });
     }
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('remise_reprises');
+        Schema::dropIfExists('companies');
     }
 };

@@ -40,4 +40,11 @@ function logout(){
     //     }
     // });
 }
-
+let onChange = (e) => {
+    let value = e.target.value
+    let selected = document.body.querySelector("datalist [value=\""+value+"\"]")
+    if (selected) {
+        let id = selected.dataset.value
+        console.log('selected value is:', id)
+    }
+}

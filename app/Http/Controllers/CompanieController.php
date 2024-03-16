@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Consommation;
+use App\Models\Companie;
 use Illuminate\Http\Request;
 
-class ConsommationController extends Controller
+class CompanieController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view("consommation-pump");
+        //
     }
 
     /**
@@ -34,17 +34,15 @@ class ConsommationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($consommation)
+    public function show(Companie $companie)
     {
-
-        $vehicule=Consommation::where("plaque",$consommation)->orderBy('index',"asc")->get();
-        return view("components.show-detail-vehicule",compact("vehicule"));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Consommation $consommation)
+    public function edit(Companie $companie)
     {
         //
     }
@@ -52,7 +50,7 @@ class ConsommationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Consommation $consommation)
+    public function update(Request $request, Companie $companie)
     {
         //
     }
@@ -60,7 +58,7 @@ class ConsommationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Consommation $consommation)
+    public function destroy(Companie $companie)
     {
         //
     }

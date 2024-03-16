@@ -2,7 +2,8 @@
     <div class="row">
         @foreach ($vehicules as $plaque => $vehicule)
             <div class="col-lg-4">
-                <caption>{{$plaque}} <button class="badge bg-primary" x-on:click="$wire.showModal('{{$plaque}}')"> Voir plus</button></caption>
+                <caption>{{$plaque}} <a class="badge bg-primary text-white" href="{{route("consommation.show",$plaque)}}"> Voir plus</a></caption>
+                {{-- <caption>{{$plaque}} <button class="badge bg-primary" wire:click="showModal('{{$plaque}}')"> Voir plus</button></caption> --}}
                 <table class="table table-bordered table-sm table-responsive-sm">
                     <thead>
                         <tr class="alert alert-info">
@@ -17,6 +18,7 @@
                     </thead>
                     <tbody>
                         <i class="d-none">{{$nombredefois=1}}</i>
+                        <i class="d-none">{{$kilometreNormal=0}}</i>
                         @foreach ($vehicule as $consommation)
                             <tr>
                                 <td><small>{{$consommation->littre}}L</small></td>
@@ -44,6 +46,6 @@
                 </table>
             </div>
         @endforeach
-        <x-show-detail-vehicule :vehicule="$vehiculeObjet"></x-show-detail-vehicule>
+        {{-- <x-show-detail-vehicule :vehicule="$vehiculeObjet"></x-show-detail-vehicule> --}}
     </div>
 </div>

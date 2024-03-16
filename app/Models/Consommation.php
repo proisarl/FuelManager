@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Consommation extends Model
 {
@@ -17,7 +17,7 @@ class Consommation extends Model
     }
     public function typeVehicule():BelongsTo
     {
-        return $this->belongsTo(typeVehicule::class,"type_vehicule_id");
+        return $this->belongsTo(TypeVehicule::class,"type_vehicule_id");
     }
 }
 

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string("plaque")->nullable();
             $table->string("pompiste")->nullable();
             $table->string("department")->nullable();
-            $table->string("engin")->nullable();
+            $table->foreignId('type_vehicule_id')->constrained()->onDelete('cascade')->nullable();
             $table->string("indexdepart")->nullable();
             $table->string("indexcloture")->nullable();
             $table->timestamps();

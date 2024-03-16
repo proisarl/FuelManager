@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
             CreateUserSeeder::class,
             CreatePosteSeeder::class,
             CreateAffectationSeeder::class,
-            CreateRoleAndPermissionSeeder::class
+            CreateRoleAndPermissionSeeder::class,
+            CreateCompanySeeder::class,
         ]);
 
         $this->command->info("''''''''''''''''''''''''''''");

@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Vehicule;
 
-use App\Models\Consommation;
 use Livewire\Component;
+use App\Models\Consommation;
 
 class VehiculeComponent extends Component
 {
@@ -11,7 +11,7 @@ class VehiculeComponent extends Component
     public  $vehiculeObjet;
 
     public function showModal($data){
-        $this->vehiculeObjet=Consommation::where("plaque",$data)->get();
+       
         
         $this->dispatch('eventModal', ['modal' => '#showVehicule']);
     }
@@ -19,7 +19,7 @@ class VehiculeComponent extends Component
     {
         // $this->vehicules=Consommation::orderBy("plaque")->get()->
         // groupBy("plaque");
-        $consommation = Consommation::all();
+        $consommation = Consommation::orderBy("created_at","asc")->get();
         $this->vehicules=$consommation->groupBy('plaque')->toBase();
     }
 
