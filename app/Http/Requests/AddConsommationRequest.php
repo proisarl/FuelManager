@@ -25,7 +25,7 @@ class AddConsommationRequest extends FormRequest
         return [
             "consommation.chauffeur"=>"required",
             "consommation.plaque"=>"required",
-            "consommation.companie"=>"required|string",
+            "consommation.companie_id"=>"required|integer",
             "consommation.littre"=>"required|integer",
             "consommation.department"=>"required|string|min:3",
             "consommation.type_vehicule_id"=>"required|integer",
@@ -34,7 +34,7 @@ class AddConsommationRequest extends FormRequest
             "consommation.pompiste"=>"required|string",
             "consommation.pompe_id"=>"required",
             "consommation.index"=>"integer|required_if:hs,false",
+            "consommation.companie"=>['string','required_if:companie_id,38','min:2'],
         ];
-       
     }
 }

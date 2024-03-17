@@ -13,6 +13,7 @@
   {{-- <link href="{!! asset("template/css/sweetalert.css") !!}" rel="stylesheet"> --}}
   {{-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"> --}}
   <link href="{!! asset("template/css/sb-admin-2.min.css") !!}" rel="stylesheet">
+  <link href="{!! asset("template/dist/css/select2.min.css")!!}" rel="stylesheet" type="text/css">
   
 </head>
   <body class="bg-gradient-primary">
@@ -32,7 +33,8 @@
   <script src="{!! asset('template/vendor/jquery-easing/jquery.easing.min.js') !!}"></script>
   <script src="{!! asset('template/js/sb-admin-2.min.js') !!}"></script>
   <script src="{!! asset("template/js/sweet_alert.js") !!}"></script>
+  <script src="{!! asset("template/dist/js/select2.min.js") !!}"></script>
   @include('sweetalert::alert')
-  
   <script src="{!! asset("template/js/swetalert-modal.js") !!}"></script>
+  @stack('scripts')
 </html>

@@ -15,7 +15,7 @@
                             @error('consommation.affectation_id')<small class="text-danger">{{$message}}</small>@enderror
                             <i class="input-group-text">Pompe N°</i>
                             <select class="form-control col-lg-2" wire:model.live="consommation.pompe_id">
-                                <option value="">Select....</option>
+                                <option value>Select....</option>
                                 <template x-for="[key, value] of Object.entries(pompes)" :key="key">
                                     <option :value="key" x-text="value"></option>
                                 </template>
@@ -26,13 +26,13 @@
                     @endrole
                 <div class="mt-2">
                     <label class="text-label">Companie <span class="text-warning">*</span></label>
-                    <div class="input-group">
-                    <select wire:model="consommation.companie" class="form-control">
-                        
-                    </select>
-
-
-
+                    <div wire:ignore class="input-group">
+                        <select class="form-control exemple">
+                            <option selected class="text-muted">select...</option>
+                            @foreach ($companies as $companie)
+                                <option value="{{$companie->id}}">{{$companie->designation}}</option>
+                            @endforeach
+                        </select>
                     @role("OfficicierDirect")
                         <i class="input-group-text">Pompe N°</i>
                         <select class="form-control col-lg-2" wire:model.live="consommation.pompe_id">
@@ -43,10 +43,15 @@
                         </select>
                     @endrole
                         </div>
-                    @error('consommation.companie')<small class="text-danger">{{$message}}</small>@enderror
+                    @error('consommation.companie_id')<small class="text-danger">{{$message}}</small>@enderror
                     @role("OfficicierDirect")
                         @error('consommation.pompe_id')<small class="text-danger">{{$message}}</small>@enderror
                     @endrole
+                </div>
+                <div class="mt-2" x-show="$wire.consommation['companie_id'] == 38">
+                    <label class="text-label">Preciser La Companie<span class="text-warning">*</span></label>
+                    <input type="text" class="form-control" wire:model="consommation.companie">
+                    @error('consommation.companie')<small class="text-danger">{{$message}}</small>@enderror
                 </div>
                 <div class="mt-2">
                     <label class="text-label">Departement<span class="text-warning">*</span></label>
@@ -68,8 +73,9 @@
                     </select>
                     @error('consommation.type_vehicule_id')<small class="text-danger">{{$message}}</small>@enderror
                 </div>
+            </div>
+            <div class="col-lg-6">
                 <div class="mt-2">
-                    
                     <label class="text-label">Km d'Engin <span class="text-warning">*</span></label>
                     <div class="input-group">
                         <input type="text" class="form-control" wire:model="consommation.index">
@@ -77,16 +83,14 @@
                     </div>
                     @error('consommation.index')<small class="text-danger">{{$message}}</small>@enderror
                 </div>
-            </div>
-            <div class="col-lg-6">
                 <div class="mt-2">
                     <label class="text-label">Index de Depart <span class="text-warning">*</span></label>
-                    <input type="number" class="form-control" wire:model.live="consommation.indexdepart">
+                    <input type="number" class="form-control" wire:model.lazy="consommation.indexdepart">
                     @error('consommation.indexdepart')<small class="text-danger">{{$message}}</small>@enderror
                 </div>
                 <div class="mt-2">
                     <label class="text-label">Littres Consommés <span class="text-warning">*</span></label>
-                    <input type="number" class="form-control" wire:model="consommation.littre">
+                    <input type="number" class="form-control" wire:model.lazy="consommation.littre">
                     @error('consommation.littre')<small class="text-danger">{{$message}}</small>@enderror
                 </div>
                 <div class="mt-2">
@@ -112,4 +116,17 @@
             </div>  
         </div>
     </form>
+    @push('scripts')
+    <script>
+       $(document).ready(function (){
+          $('.exemple').select2();
+              $('.exemple').on('change', function (e) {
+                  var selectedOption = e.target.value;
+                  var consommation = @this.get('consommation') || [];
+                  consommation['companie_id'] = selectedOption;
+                  @this.set('selectedValue', consommation);
+          });
+        });
+    </script>
+    @endpush
 </div>

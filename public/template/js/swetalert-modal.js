@@ -48,3 +48,15 @@ let onChange = (e) => {
         console.log('selected value is:', id)
     }
 }
+// $(document).ready(function (){
+//     $('.exemple').select2();
+//     let el = $('#companie')
+//                 initSelect()
+//     // $('.exemple').on('change',function(e){
+//     //     // alert(e.target.value);
+//     //     @this.set('informa', e.target.value);
+//                 el.on('change', function (e) {
+//                     @this.set('companie', el.select2("val"))
+//                 });
+//     // });
+//   });
