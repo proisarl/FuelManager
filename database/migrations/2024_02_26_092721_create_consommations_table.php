@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('affectation_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('pompe_id')->constrained()->onDelete('cascade');
+            $table->foreignId('companie_id')->constrained()->onDelete('cascade');
             // $table->foreignId('vehicule_id')->constrained()->onDelete('cascade');
             $table->string("companie")->nullable();
             $table->string("littre")->nullable();
