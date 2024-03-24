@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Consommation;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,10 @@ class ConsommationController extends Controller
      */
     public function index()
     {
-        return view("consommation-pump");
+        $products = Consommation::all();
+        return response()->json([
+            'products' => $products
+        ]);
     }
 
     /**
@@ -23,10 +27,6 @@ class ConsommationController extends Controller
         //
     }
 
-    public function investigation()
-    {
-        return view("investigation");
-    }
     /**
      * Store a newly created resource in storage.
      */
@@ -38,11 +38,9 @@ class ConsommationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($consommation)
+    public function show(Consommation $consommation)
     {
-
-        $vehicule=Consommation::where("plaque",$consommation)->orderBy('index',"asc")->get();
-        return view("components.show-detail-vehicule",compact("vehicule"));
+        //
     }
 
     /**

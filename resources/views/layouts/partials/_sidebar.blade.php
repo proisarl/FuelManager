@@ -48,7 +48,14 @@
             <span>Rapport Des Vehicules</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url("invest")}}">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Cas à Investiguer</span>
+        </a>
+    </li>
     @endrole
+    
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">

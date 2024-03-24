@@ -25,13 +25,15 @@ Route::get('/', function () {
 });
 Route::group([
     'namespace' => 'App\Http\Controllers',
-    'middleware'=>['auth',"permission_login"],
+    'middleware'=>['auth'],
+    // 'middleware'=>['auth',"permission_login"],
     // 'prefix' => 'prois',
 ], function(){
     Route::group([
         'middleware'=>["password_expired"],
     ], function(){
         Route::get('/home', 'Controller@index');
+        Route::get('/invest', 'ConsommationController@investigation');
         Route::resources([
             'poste'=>PosteController::class,
             'vehicule'=>VehiculeController::class,

@@ -75,6 +75,7 @@
       </li>
 
   </ul>
+  
 
 </nav>
 <div class="container-fluid">
@@ -89,5 +90,7 @@
 
   <livewire:remise-reprise>
   <!-- Content Row -->
-  <livewire:layouts.menu-navbar>
+  @role("Administrateur")
+    <livewire:layouts.menu-navbar>
+  @endrole
  
